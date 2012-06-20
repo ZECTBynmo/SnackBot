@@ -10,6 +10,7 @@ AIMTools.aim = {};
 AIMTools.defaultResponse = "Umm, what?";
 AIMTools.keyAndResponseMap = {};
 
+// Create our aim struct, connect to AIM, and create our on IM event handler
 AIMTools.connect = function( screenName, password ) {
 	// Our AIM struct
 	AIMTools.aim = new oscar.OscarConnection({
@@ -73,7 +74,7 @@ AIMTools.addKeyResponse = function( key, response, callback ) {
 
 
 // Changes the default response of the bot
-AIMTools.setDefaultResponse = function( response ) { 
+AIMTools.setDefaultResponse = function( response ) {
 	AIMTools.defaultResponse = response;
 } // end setDefaultResponse()
 
