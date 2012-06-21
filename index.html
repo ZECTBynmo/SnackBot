@@ -1,9 +1,32 @@
 <!doctype html>
 <html>
 	<head>
-	
-	</head>	
+		<!-- ------------------------------------------------------------------------------------------------ -->
+		<!-- Scripts -->	
+		<!-- ------------------------------------------------------------------------------------------------ -->
+		<script src="jquery-1.7.1.min.js" type="text/javascript"></script>
+		<script>
+			function displaySnackers( snackers ) {
+				$('#snackerList').empty();
+				for( iSnacker=0; iSnacker<snackers.length; ++iSnacker ) {
+					$("#snackerList").append('<li>' + snackers[iSnacker] +'</li><br />');
+				}
+			} // end displaySnackers()
+			
+			function refreshSnackers() {
+				jQuery.get("/getSnackers", {}, function (data, status) {
+					if (status != "success") return;
+					displaySnackers( data.snackers );
+				}, "json");
+			} // end refreshSnackers()
+		</script>
+	</head>
 	<body>
-		<button type="button">Add me!</button>
+		<h1 align='center'>Add yourself to the list by IM'ing izotopesnackbot, and saying "add me"</h1>
+		<h2 align='center'>Notify everyone of a snack run by saying "trigger snacks"</h2>
+		<h4 align='center'>The bot is not case sensitive</h2>
+		
+		<ol id="snackerList"></ol>
+		<input id="clearButton" type="button" onClick="refreshSnackers();" value="Display Snackers"/>
 	</body>	
 </html>
