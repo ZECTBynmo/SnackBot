@@ -2,7 +2,7 @@
 // Node.js Exports
 var AIMTools = exports;
 
-var oscar = require('oscar');
+var oscar = require("./oscar/oscar");
 
 AIMTools.aim = {};
 
