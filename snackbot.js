@@ -111,7 +111,7 @@ function removeSnacker( snacker ) {
 	
 	// Remove the snacker we found
 	if( snackerIndex != -1 ) {
-		snackers.splice(1,snackerIndex);
+		snackers.splice( snackerIndex, 1 );
 	} else {
 		AIMTools.sendMessage( snacker, "Couldn't find you in the list..." );
 	}
