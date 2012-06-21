@@ -33,8 +33,21 @@ AIMTools.addKeyResponse( "trigger snacks", "THE TIME IS UPON US", function( send
 
 // Adds a snacker to the list of people who want to be notified of snacks
 function addSnacker( screenName ) {
-	snackers.push( screenName );
-	console.log( "We have " + snackers.length + " snackers now" );
+	var isSnackerInList = false;
+
+	// Look through our list of snackers and make sure we don't have this screen name already
+	for( iSnacker=0; iSnacker<snackers.length; ++iSnacker ) {
+		if( snackers[iSnacker] == screenName )
+			isSnackerInList = true;
+	} // end for each snacker
+	
+	if( !isSnackerInList ) {	
+		snackers.push( screenName );
+		console.log( screenName + " wants snacks. We have " + snackers.length + " snackers now" );
+	} else {
+		console.log( screenName + " was already in the list of snackers" );
+		AIMTools.sendMessage( screenName, "You're already on the list, don't make me take you off..." );
+	}
 } // end addSnacker()
 
 
