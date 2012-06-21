@@ -4,7 +4,7 @@ PORT = 5325;
 //----------------------------------------------------------------------------------------------------
 //	Requires
 //----------------------------------------------------------------------------------------------------		
-var oscar = require("oscar");
+var oscar = require("./oscar/oscar");
 var ServerTools = require("./ServerTools");
 var AIMTools = require("./AIMTools");
 
