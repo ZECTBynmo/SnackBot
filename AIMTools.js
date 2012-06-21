@@ -3,7 +3,6 @@
 var AIMTools = exports;
 
 var oscar = require('oscar');
-var authInfo = require("./AuthInfo");
 
 AIMTools.aim = {};
 

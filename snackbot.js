@@ -7,7 +7,20 @@ PORT = 5325;
 var oscar = require("oscar");
 var ServerTools = require("./ServerTools");
 var AIMTools = require("./AIMTools");
-var authInfo = require("./AuthInfo");
+
+// use try/catch on our auth info require
+try {
+	var authInfo = require("./AuthInfo");
+} catch( err ) {
+	// If we don't have the module, look for environment variables
+	var authInfo = {
+		screenName: process.env.AIM_SCREEN,
+		password: process.env.AIM_PASS
+	}
+}
+
+console.log( authInfo.screenName );
+console.log( authInfo.password );
 
 //----------------------------------------------------------------------------------------------------
 //	File scope variables
