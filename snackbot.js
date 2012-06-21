@@ -64,16 +64,21 @@ AIMTools.addKeyResponse( "trigger snacks", "THE TIME IS UPON US", function(sende
 	triggerSnacks( sender );
 });
 
+AIMTools.addKeyResponse( "remove me", "NOOOOoooo0oooo", function(sender, text) {	
+	removeSnacker( sender );
+});
+
 // Adds a snacker to the list of people who want to be notified of snacks
 function addSnacker( screenName ) {
+	console.log("trying to add snacker " + screenName );
 	var isSnackerInList = false;
 
 	// Look through our list of snackers and make sure we don't have this screen name already
 	for( iSnacker=0; iSnacker<snackers.length; ++iSnacker ) {
-		if( snackers[iSnacker].name == screenName ) {
+		if( snackers[iSnacker] == screenName ) {
 			isSnackerInList = true;
 			break;
-		}
+		} else { console.log(snackers[iSnacker]); console.log(screenName); }
 	} // end for each snacker
 	
 	if( !isSnackerInList ) {
@@ -89,6 +94,25 @@ function addSnacker( screenName ) {
 // Notify the snackers that their time has come
 function triggerSnacks( triggeredBy ) {
 	for( var iSnacker=0; iSnacker<snackers.length; ++iSnacker ) {
-		AIMTools.sendMessage( snackers[iSnacker].name, "SNACKS! Triggered by " + triggeredBy );
+		AIMTools.sendMessage( snackers[iSnacker], "SNACKS! Triggered by " + triggeredBy );
 	}
 } // end triggerSnacks()
+
+
+// Remove a snacker from the list
+function removeSnacker( snacker ) {
+	var snackerIndex = -1;
+	for( iSnacker=0; iSnacker<snackers.length; ++iSnacker ) {
+		if( snackers[iSnacker] == snacker ) {
+			snackerIndex = iSnacker;
+			break;
+		}
+	} // end for each snacker
+	
+	// Remove the snacker we found
+	if( snackerIndex != -1 ) {
+		snackers.splice(1,snackerIndex);
+	} else {
+		AIMTools.sendMessage( snacker, "Couldn't find you in the list..." );
+	}
+} // end removeSnacker()
