@@ -90,7 +90,7 @@ ServerTools.createFileHandler = function( filename ) {
 } // end createFileHandler()
 
 
-// Add a response handler to our map
+// Add a request handler to our map
 ServerTools.addRequestHandler = function( path, handler ) {
 	requestHandlers[path] = handler;
 }; // end addRequestHandler()
