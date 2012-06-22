@@ -1,3 +1,4 @@
 node_modules/
-Addon/
+Addon/testAddon/Debug/
+Addon/testAddon/Release/
 AuthInfo.js
