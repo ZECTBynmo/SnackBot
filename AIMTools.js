@@ -9,9 +9,10 @@ AIMTools.aim = {};
 AIMTools.defaultResponse = "Umm, what?";
 AIMTools.keyAndResponseMap = {};
 
+//////////////////////////////////////////////////////////////////////////
 // Create our aim struct, connect to AIM, and create our on IM event handler
 AIMTools.connect = function( screenName, password ) {
-	// Our AIM struct
+	// Create an oscar connection with our screen name and password info
 	AIMTools.aim = new oscar.OscarConnection({
 		connection: {
 			username: screenName,
@@ -60,6 +61,7 @@ AIMTools.connect = function( screenName, password ) {
 } // end connect()
 
 
+//////////////////////////////////////////////////////////////////////////
 // Adds a response when the given key is found in an IM
 AIMTools.addKeyResponse = function( key, response, callback ) {
 	var keyResponse = {
@@ -72,12 +74,14 @@ AIMTools.addKeyResponse = function( key, response, callback ) {
 } // end addKeyResponse()
 
 
+//////////////////////////////////////////////////////////////////////////
 // Changes the default response of the bot
 AIMTools.setDefaultResponse = function( response ) {
 	AIMTools.defaultResponse = response;
 } // end setDefaultResponse()
 
 
+//////////////////////////////////////////////////////////////////////////
 // Send a message to someone
 AIMTools.sendMessage = function( recipient, message ) {
 	AIMTools.aim.sendIM( recipient, message );

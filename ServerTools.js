@@ -2,18 +2,6 @@
 // Node.js Exports
 var ServerTools = exports;
 
-// Note: If we were defining a class, it would be better served to do this
-//
-/* 
-	var globalNamespace = {};
-	(function (exports) {												// Inline function with an arugument
-		exports.getNewInstance = function( ..constructor arguments.. ) {
-			newInstance= new MyClass( ..constructor arguments.. );
-			return newInstance;
-		};
-	}(typeof exports === 'object' && exports || globalNamespace)); 		// pass exports into the function if its an object, otherwise use the global namespace
-*/
-
 var createServer = require("http").createServer;
 var readFile = require("fs").readFile;
 var sys = require("sys");
@@ -23,6 +11,7 @@ var url = require("url");
 var requestHandlers = {};
 
 
+//////////////////////////////////////////////////////////////////////////
 // Create a server using the built in HTTP and declare our response to client requests
 var server = createServer(function (request, response) {
 	// Handle GET requests
@@ -44,13 +33,15 @@ var server = createServer(function (request, response) {
 }); // end createServer()
 
 
-// Listen for requests on a given port
+//////////////////////////////////////////////////////////////////////////
+// Listen for requests on a given port and host
 ServerTools.listen = function( port, host ) {
 	server.listen( port, host );
 	console.log("Server at http://" + (host || "localhost") + ":" + port.toString() + "/");
 } // end listen()
 
 
+//////////////////////////////////////////////////////////////////////////
 // Create a response handler for a static file
 ServerTools.createFileHandler = function( filename ) {
 	var body, headers;
@@ -90,12 +81,14 @@ ServerTools.createFileHandler = function( filename ) {
 } // end createFileHandler()
 
 
+//////////////////////////////////////////////////////////////////////////
 // Add a request handler to our map
 ServerTools.addRequestHandler = function( path, handler ) {
 	requestHandlers[path] = handler;
 }; // end addRequestHandler()
 
 
+//////////////////////////////////////////////////////////////////////////
 // Construct a not found response
 function notFound(req, res) {
 	var notFoundString = "Not Found\n";
@@ -108,6 +101,7 @@ function notFound(req, res) {
 } // end notFound()
 
 
+//////////////////////////////////////////////////////////////////////////
 // Get the extension of a file
 function extname (path) {
 	var index = path.lastIndexOf(".");
