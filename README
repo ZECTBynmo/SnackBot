@@ -1,0 +1,6 @@
+SnackBot is a simple node.js application that can do a couple things
+1) Sign into AIM and respond to messages
+2) Serve web pages
+3) Respond to http requests
+
+It contains two simple API's AIMTools and ServerTools
