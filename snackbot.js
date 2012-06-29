@@ -82,12 +82,11 @@ function addSnacker( screenName ) {
 	if( !isSnackerInList ) {
 		var newSnacker = { name: screenName }
 		snackers.push( screenName );
-		console.log( screenName + " wants snacks. We have " + snackers.length + " snackers now" );
 	} else {
-		console.log( screenName + " was already in the list of snackers" );
 		AIMTools.sendMessage( screenName, "You're already on the list, don't make me take you off..." );
 	}
 } // end addSnacker()
+
 
 // Notify the snackers that their time has come
 function triggerSnacks( triggeredBy ) {
