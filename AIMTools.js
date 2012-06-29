@@ -10,7 +10,7 @@ AIMTools.defaultResponse = "Umm, what?";
 AIMTools.keyAndResponseMap = {};
 
 //////////////////////////////////////////////////////////////////////////
-// Create our aim struct, connect to AIM, and create our on IM event handler
+// Create our OSCAR connection, connect to AIM, and create our on IM event handler
 AIMTools.connect = function( screenName, password ) {
 	// Create an oscar connection with our screen name and password info
 	AIMTools.aim = new oscar.OscarConnection({
